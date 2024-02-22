@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import Login from './components/Login';
 import Register from './components/Register';
+import ProfileForm from './components/ProfileForm';
 
 const App: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,11 +21,11 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {isLogin ? (
-        <Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />
-      ) : (
-        <Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />
-      )}
+      <Routes>
+        <Route path="/login" element={<Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />} />
+        <Route path="/register" element={<Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />} />
+        <Route path="/" element={<ProfileForm />} />
+      </Routes>
     </div>
   );
 };
