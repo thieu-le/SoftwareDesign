@@ -1,19 +1,29 @@
-// App.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const App: React.FC = () => {
-  const handleSubmit = (username: string, password: string) => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleLoginSubmit = (username: string, password: string) => {
     // Logic for handling login
   };
 
-  const handleRegister = () => {
+  const handleRegisterSubmit = (username: string, password: string) => {
     // Logic for handling registration
+  };
+
+  const handleToggleForm = () => {
+    setIsLogin(!isLogin);
   };
 
   return (
     <div className="App">
-      <Login onSubmit={handleSubmit} onRegister={handleRegister} />
+      {isLogin ? (
+        <Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />
+      ) : (
+        <Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />
+      )}
     </div>
   );
 };
