@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 
 interface LoginProps {
   onSubmit: (username: string, password: string) => void;
+  onRegister: () => void; // New property for the register function
 }
 
-const Login: React.FC<LoginProps> = ({ onSubmit }) => {
+const Login: React.FC<LoginProps> = ({ onSubmit, onRegister }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,6 +36,7 @@ const Login: React.FC<LoginProps> = ({ onSubmit }) => {
           />
         </div>
         <button type="submit">Login</button>
+        <button type="button" onClick={onRegister}>Register</button> {/* Button to trigger the register function */}
       </form>
     </div>
   );

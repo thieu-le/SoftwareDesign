@@ -3,16 +3,17 @@ import React from 'react';
 import Login from './components/Login';
 
 const App: React.FC = () => {
-  const handleLogin = (username: string, password: string) => {
-    // Here you can handle the login logic
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const handleSubmit = (username: string, password: string) => {
+    // Logic for handling login
+  };
+
+  const handleRegister = () => {
+    // Logic for handling registration
   };
 
   return (
-    <div>
-      <h1>Welcome to My App</h1>
-      <Login onSubmit={handleLogin} />
+    <div className="App">
+      <Login onSubmit={handleSubmit} onRegister={handleRegister} />
     </div>
   );
 };
