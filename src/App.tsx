@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProfileForm from './components/ProfileForm';
@@ -21,11 +21,14 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/login" element={<Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />} />
-        <Route path="/register" element={<Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />} />
-        <Route path="/" element={<ProfileForm />} />
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />} />
+          <Route path="/register" element={<Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />} />
+          <Route path="/profile" element={<ProfileForm />} />
+          <Route path="/" element={<div>Home Page</div>} /> {/* You might want to render something for the home page */}
+        </Routes>
+      </Router>
     </div>
   );
 };
