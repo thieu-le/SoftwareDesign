@@ -11,6 +11,7 @@ const FuelQuoteForm: React.FC<FuelQuoteFormProps> =  ({clientProfile}) => {
     const [gallonsRequested, setGallonsRequested] =  useState<number | ''>('');
     const [deliveryDate, setDeliveryDate] = useState<Date | null>(null);
     const [suggestedPrice, setSuggestedPrice] = useState<number | ''>('');
+    const [totalAmountDue, setTotalAmountDue] = useState<number | ''>('');
 
 
     const gallonChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,10 +25,16 @@ const FuelQuoteForm: React.FC<FuelQuoteFormProps> =  ({clientProfile}) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Since not building pricing module yet, will leave blank for now.
-
-        // setSuggestedPrice(calculatedPrice)
+        const calculatedPrice = 0 // Setting at 0 for now since not building price module yet.
+        setSuggestedPrice(calculatedPrice)
+   
+        if (typeof gallonsRequested === 'number' && !isNaN(gallonsRequested)) {
+            // Calculate total amount due
+            const totalDue = gallonsRequested * calculatedPrice;
+            setTotalAmountDue(totalDue);
+        } 
     };
+
 
     return(
         <div>
@@ -69,6 +76,15 @@ const FuelQuoteForm: React.FC<FuelQuoteFormProps> =  ({clientProfile}) => {
                         value={suggestedPrice}
                         readOnly
                     />    
+                </div>
+                <div>
+                    <label htmlFor="totalAmountDue">Total Amount Due</label>
+                    <input
+                        type="number"
+                        id="totalAmountDue"
+                        value={totalAmountDue}
+                        readOnly
+                    />
                 </div>
                 <button type = "submit">Submit</button>
             </form>
