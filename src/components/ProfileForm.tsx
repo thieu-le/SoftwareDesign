@@ -12,9 +12,10 @@ const ProfileForm: React.FC = () => {
     e.preventDefault();
     // Handle profile submission logic, e.g., sending data to the server
   };
-
+  
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Profile Management</h2>
       <input
         type="text"
         placeholder="Full Name"
