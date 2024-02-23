@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ProfileForm from './components/ProfileForm';
 import FuelQuoteForm from './components/FuelQuoteForm';
+import FuelQuoteHistory from './components/FuelQuoteHistory';
 
 const App: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />} />
           <Route path="/profile" element={<ProfileForm />} />
           <Route path="/fuelquoteform" element={<FuelQuoteForm clientProfile={{ deliveryAddress: '123 Main St' }} />} />
+          <Route path="/fuelquotehistory" element={<FuelQuoteHistory />} />        
         </Routes>
       </Router>
     </div>
