@@ -16,45 +16,73 @@ const ProfileForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Profile Management</h2>
-      <input
-        type="text"
-        placeholder="Full Name"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Address 1"
-        value={address1}
-        onChange={(e) => setAddress1(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Address 2"
-        value={address2}
-        onChange={(e) => setAddress2(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="City"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        required
-      />
-      <select value={state} onChange={(e) => setState(e.target.value)} required>
-        <option value="">Select State</option>
-        {/* Populate states dynamically or hardcode them */}
-      </select>
-      <input
-        type="text"
-        placeholder="Zipcode"
-        value={zipcode}
-        onChange={(e) => setZipcode(e.target.value)}
-        minLength={5}
-        required
-      />
+      <div>
+        <label htmlFor="fullName">Full Name (Max 50 characters):</label>
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          maxLength={50}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="address1">Address 1 (Max 100 characters):</label>
+        <input
+          type="text"
+          id="address1"
+          placeholder="Address 1"
+          value={address1}
+          onChange={(e) => setAddress1(e.target.value)}
+          maxLength={100}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="address2">Address 2 (Max 100 characters):</label>
+        <input
+          type="text"
+          id="address2"
+          placeholder="Address 2"
+          value={address2}
+          onChange={(e) => setAddress2(e.target.value)}
+          maxLength={100}
+        />
+      </div>
+      <div>
+        <label htmlFor="city">City (Max 100 characters):</label>
+        <input
+          type="text"
+          id="city"
+          placeholder="City"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          maxLength={100}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="state">State:</label>
+        <select id="state" value={state} onChange={(e) => setState(e.target.value)} required>
+          <option value="">Select State</option>
+          {/* Populate states dynamically or hardcode them */}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="zipcode">Zipcode (Min 5 characters):</label>
+        <input
+          type="text"
+          id="zipcode"
+          placeholder="Zipcode"
+          value={zipcode}
+          onChange={(e) => setZipcode(e.target.value)}
+          minLength={5}
+          maxLength={9}
+          required
+        />
+      </div>
       <button type="submit">Save</button>
     </form>
   );
