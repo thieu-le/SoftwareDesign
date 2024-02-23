@@ -54,7 +54,7 @@ const FuelQuoteForm: React.FC<FuelQuoteFormProps> =  ({clientProfile}) => {
                 </div>
                 <div>
                     <label htmlFor="deliveryDate">Delivery Date</label>
-                    <input 
+                    <DatePicker 
                         id="deliveryDate"
                         selected = {deliveryDate}
                         onChange={dateChanges}

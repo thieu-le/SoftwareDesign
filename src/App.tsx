@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProfileForm from './components/ProfileForm';
+import FuelQuoteForm from './components/FuelQuoteForm';
 
 const App: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     // Logic for handling registration
   };
 
+
   const handleToggleForm = () => {
     setIsLogin(!isLogin);
   };
@@ -23,10 +25,10 @@ const App: React.FC = () => {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/login" element={<Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />} />
+          <Route path="/" element={<Login onSubmit={handleLoginSubmit} onRegister={handleToggleForm} />} />
           <Route path="/register" element={<Register onSubmit={handleRegisterSubmit} onLogin={handleToggleForm} />} />
           <Route path="/profile" element={<ProfileForm />} />
-          <Route path="/" element={<div>Home Page</div>} /> {/* You might want to render something for the home page */}
+          <Route path="/fuelquoteform" element={<FuelQuoteForm clientProfile={{ deliveryAddress: '123 Main St' }} />} />
         </Routes>
       </Router>
     </div>
