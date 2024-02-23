@@ -12,7 +12,18 @@ const ProfileForm: React.FC = () => {
     e.preventDefault();
     // Handle profile submission logic, e.g., sending data to the server
   };
-  
+
+  // List of all 50 states plus Texas
+  const states = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
+    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
+    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  ];
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Profile Management</h2>
@@ -67,7 +78,9 @@ const ProfileForm: React.FC = () => {
         <label htmlFor="state">State:</label>
         <select id="state" value={state} onChange={(e) => setState(e.target.value)} required>
           <option value="">Select State</option>
-          {/* Populate states dynamically or hardcode them */}
+          {states.map((stateOption, index) => (
+            <option key={index} value={stateOption}>{stateOption}</option>
+          ))}
         </select>
       </div>
       <div>
@@ -79,7 +92,6 @@ const ProfileForm: React.FC = () => {
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
           minLength={5}
-          maxLength={9}
           required
         />
       </div>
